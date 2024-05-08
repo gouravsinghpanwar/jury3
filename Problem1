@@ -1,0 +1,25 @@
+#defining function which calculate power of a number
+def pow(base,ex):
+    #base case if exponent is 1 final value will be base
+    if ex==1:
+        return base
+#base case if exponent is 0 final value will be 1
+    elif ex==0:
+        return 1
+    elif ex<0: 
+        return 1/base*pow(base,ex+1)
+    return power(base,ex)
+
+#power function of power which do squaring of exponent, which is more efficient for large exponents
+def power(base,ex):
+    if ex==0:
+        return 1
+    elif ex%2 ==1:
+        #if power is odd multiply the result of power function which is applied to squared base
+        return base *power(base*base,(ex-1)//2)
+    else: 
+        #if power is even do the power function to base squared and then half the exponent
+        return power (base*base,ex//2)
+base=int(input('base='))        
+ex=int(input('exponent='))
+print(pow(base,ex))
