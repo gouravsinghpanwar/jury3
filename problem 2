@@ -1,0 +1,41 @@
+#defining function for player 1
+def player_1(n):
+    #checking if chocolates left in the bowl or not
+    if n!=0:
+        #asking player 1 to remove chocolate
+        x=int(input("How many chocolate player 1 remove?:"))
+        #player 1 can remove either 1 or 2 chocolates from the bowl
+        if x==1 or x==2:
+            #substract the choosen amount from the total
+            n=n-x
+            return player_2(n)
+        else:
+            #if player 1 enter more than 2 chocolates to be remove
+            print("Player 1 only can remove 1 or 2 chocolates.")
+            return player_1(n)
+    else:
+        print("Player 2 wins!!")
+
+def player_2(n):
+    if n!=0:
+        #checking that the chocolates left in bowl are even or odd
+        if n%2==0:
+            n=n-2
+            print("Player 2 removed 2 chocolates.")
+            return player_1(n)
+        else:
+            #if left chocolates in the bowl are odd then player 2 remove 1 chocolate
+            n=n-1
+            print("Player 2 removed 1 chocolate.")
+            return player_1(n)
+    else:
+        print("Player 1 wins!!")
+
+#asking user to enter the total number of chocolates in the bowl before starting the game
+n=int(input("How many chocolates you want in the bowl?"))
+if n>0:
+#calling function player_1(n) if user enter right integer
+    player_1(n)
+else:
+#ending the game because user enter wrong integer
+    print("Enter a valid number to play the game..")
